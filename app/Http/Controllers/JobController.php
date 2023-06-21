@@ -12,24 +12,9 @@ class JobController extends Controller
      */
     public function index()
     {
-        $jobs = Job::query();
-        $search = request('search');
+        $filters = request()->only(Job::$filters);
 
-        $jobs->when(request('search'), function ($query, $search) {
-            $query->where(function ($query) use ($search) {
-                $query->where('title', 'like', "%{$search}%")
-                    ->orWhere('description', 'like', "%{$search}%");
-            });
-        });
-
-
-        $jobs->when(request('min_salary'), fn ($query, $min_salary) => $query->where('salary', '>=', $min_salary));
-        $jobs->when(request('max_salary'), fn ($query, $max_salary) => $query->where('salary', '<=', $max_salary));
-
-        $jobs->when(request('category'), fn ($query, $category)  => $query->where('category', $category));
-        $jobs->when(request('experience'), fn ($query, $experience) => $query->where('experience', $experience));
-
-        return view('job.index',['jobs' => $jobs->get(), 'experience' => Job::$experience, 'categories' => Job::$categories]);
+        return view('job.index',['jobs' => Job::with('employer')->filter($filters)->get(), 'experience' => Job::$experience, 'categories' => Job::$categories]);
     }
 
     /**
@@ -51,9 +36,9 @@ class JobController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show(Job $job)
     {
-        return view('job.show',['job' => Job::findOrFail($id)]);
+        return view('job.show',['job' => $job->load('employer.jobs')]);
     }
 
     /**
