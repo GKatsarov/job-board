@@ -6,12 +6,18 @@ use Closure;
 use Illuminate\Contracts\View\View;
 use Illuminate\View\Component;
 
-class TextInputTwo extends Component
+class TextInputSm extends Component
 {
     /**
      * Create a new component instance.
      */
-    public function __construct(public ?string $value = null, public ?string $name = null, public ?string $placeholder = null)
+    public function __construct(
+        public ?string $value = null,
+        public ?string $name = null,
+        public ?string $placeholder = null,
+        public ?string $formRef = null,
+        public ?string $type = 'text'
+    )
     {
         //
     }
@@ -21,6 +27,6 @@ class TextInputTwo extends Component
      */
     public function render(): View|Closure|string
     {
-        return view('components.text-input-two');
+        return view('components.text-input-sm');
     }
 }

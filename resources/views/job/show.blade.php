@@ -1,4 +1,4 @@
-<x-layout>
+<x-main-layout>
 
     <x-job-card :$job>
         <p class="text-sm text-slate-500 mb-4">
@@ -31,4 +31,4 @@
             @endforeach
         </div>
     </x-card>
-</x-layout>
+</x-main-layout>

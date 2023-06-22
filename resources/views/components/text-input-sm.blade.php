@@ -1,5 +1,5 @@
 <div class="relative">
-    @if ($value)
+    @if (!empty($value))
         <button type="submit" class="absolute top-0 right-0 flex h-full items-center pr-2"
                 @click="$refs['input-{{ $name }}'].value=''">
 
@@ -9,7 +9,7 @@
             </svg>
         </button>
     @endif
-    <input x-ref="input-{{ $name }}" type="text" placeholder="{{ $placeholder }}"
+    <input x-ref="input-{{ $name }}" type="{{ $type }}" placeholder="{{ $placeholder }}"
            name="{{ $name }}" value="{{ $value }}" id="{{ $name }}"
            class="w-full rounded-md border-0 pr-8 text-sm placeholder:text-slate-400 ring-1 ring-slate-300 py-1.5 px-2.5 focus:ring-2"/>
 </div>
