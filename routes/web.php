@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\JobApplicationController;
 use App\Http\Controllers\JobController;
+use App\Http\Controllers\MyJobApplicationController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
@@ -29,6 +30,7 @@ Route::middleware('auth')->group(function () {
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
     Route::resource('jobs.application', JobApplicationController::class)->only(['create', 'store']);
+    Route::resource('my-job-applications', MyJobApplicationController::class)->only(['index', 'destroy']);
 });
 
 require __DIR__.'/auth.php';

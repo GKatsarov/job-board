@@ -49,6 +49,10 @@
                                 {{ __('Profile') }}
                             </x-dropdown-link>
 
+                            <x-dropdown-link :href="route('my-job-applications.index')">
+                                {{ __('My Job Applications') }}
+                            </x-dropdown-link>
+
                             <!-- Authentication -->
                             <form method="POST" action="{{ route('logout') }}">
                                 @csrf
@@ -113,6 +117,9 @@
                         {{ __('Profile') }}
                     </x-responsive-nav-link>
 
+                    <x-responsive-nav-link :href="route('my-job-applications.index')">
+                        {{ __('My Job Applications') }}
+                    </x-responsive-nav-link>
                     <!-- Authentication -->
                     <form method="POST" action="{{ route('logout') }}">
                         @csrf
