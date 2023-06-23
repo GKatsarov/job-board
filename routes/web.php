@@ -17,13 +17,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', fn () => to_route('jobs.index'));
-
-Route::resource('jobs', JobController::class)->only(['index', 'show']);
-
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
+Route::get('/', [JobController::class, 'index'])->name('home');
+Route::resource('jobs', JobController::class)->only(['show']);
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');

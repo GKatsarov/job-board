@@ -1,7 +1,7 @@
 <x-main-layout>
 
     <x-card class="mb-4 text-sm" x-data="">
-        <form action="{{ route('jobs.index') }}" method="GET" x-ref="filters">
+        <form action="{{ route('home') }}" method="GET" x-ref="filters">
             <div class="mb-4 grid grid-cols-2 gap-4">
                 <div>
                     <div class="mb-1 font-semibold">Search</div>
@@ -23,7 +23,7 @@
                 </div>
             </div>
 
-            <x-button class="w-full">Filter</x-button>
+            <x-primary-button class="w-full justify-center">Filter</x-primary-button>
         </form>
     </x-card>
 

@@ -25,7 +25,7 @@
             </div>
             <div class="text-center">
                 Go find some jobs <a class="text-indigo-500 hover:underline"
-                                     href="{{ route('jobs.index') }}">here!</a>
+                                     href="{{ route('home') }}">here!</a>
             </div>
         </div>
     @endforelse
