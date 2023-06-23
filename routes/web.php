@@ -18,12 +18,13 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', [JobController::class, 'index'])->name('home');
-Route::resource('jobs', JobController::class)->only(['show']);
+Route::get('/jobs/{job}', [JobController::class, 'show'])->name('jobs.show');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+
     Route::resource('jobs.application', JobApplicationController::class)->only(['create', 'store']);
     Route::resource('my-job-applications', MyJobApplicationController::class)->only(['index', 'destroy']);
 });

@@ -38,11 +38,4 @@ class JobApplicationController extends Controller
 
         return redirect()->route('jobs.show', $job)->with('success', 'Job application submitted successfully!');
     }
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(string $id)
-    {
-        //
-    }
 }
